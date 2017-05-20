@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlayersCollection} from '../containers/playerCollection';
+import PlayersCollection from '../containers/playerCollection';
 
 const HomePage = () => {
   return (

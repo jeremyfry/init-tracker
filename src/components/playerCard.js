@@ -7,7 +7,7 @@ const PlayerCard = ({player}) => {
       I'm a player
       {player.name}
     </div>
-  )
+  );
 };
 
 PlayerCard.propTypes = {

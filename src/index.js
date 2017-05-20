@@ -27,7 +27,7 @@ if (module.hot) {
     const NewRoot = require('./components/root').default;
     render(
       <AppContainer>
-        <NewRoot store={store} history={history} />
+        <NewRoot store={store}/>
       </AppContainer>,
       document.getElementById('app')
     );

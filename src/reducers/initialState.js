@@ -13,6 +13,9 @@ export default {
       status: STATUS__NORMAL
     }
   ],
+  newPlayer: {
+    editing: false
+  },
   initiativeOrder: [
 
   ]

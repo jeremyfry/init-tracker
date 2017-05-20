@@ -1,11 +1,12 @@
-import {PLAYER_ACTIONS} from '../actions/playerActions';
-import objectAssign from 'object-assign';
+import {PLAYER_ACTIONS} from '../constants';
 import initialState from './initialState';
 
 export default function playerReducer(state = initialState.players, action) {
   switch (action.type) {
     case PLAYER_ACTIONS.SET_STATUS:
-      return objectAssign({}, state, {status: action.status});
+      return state;
+    case PLAYER_ACTIONS.NEW_PLAYER_SAVE:
+      return  [...state, action.value];
     default:
       return state;
   }

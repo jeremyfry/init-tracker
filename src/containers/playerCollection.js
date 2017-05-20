@@ -2,30 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { PLAYER_ACTIONS } from '../actions/playerActions';
+import { PLAYER_ACTIONS } from '../constants';
+import PlayerCard from '../components/playerCard';
+import AddPlayerCard from '../components/addPlayerCard';
 
-export const PlayersCollection = (props) => {
-
+const PlayersCollectionComponent = (props) => {
   return (
     <div>
-      Player collection
-      {JSON.stringify(props)}
-      {/*{props.players.map(value =>*/}
-      {/*<div>test</div>*/}
-      {/*)}*/}
+      {props.players.map(player =>
+        <PlayerCard key={player.name} player={player}/>
+      )}
+      <AddPlayerCard/>
     </div>
   );
 };
 
-PlayersCollection.propTypes = {
-  players: PropTypes.object
+PlayersCollectionComponent.propTypes = {
+  players: PropTypes.array
 };
 
 const mapStateToProps = (state) => {
-  console.log('test');
   return {
-    players: state.players,
-    test: state.routing
+    players: state.players
   };
 };
 
@@ -39,4 +37,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PlayersCollection);
+)(PlayersCollectionComponent);
