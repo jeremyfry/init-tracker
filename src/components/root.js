@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import routes from '../routes';
 import { Router } from 'react-router';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
-export default class Root extends Component {
+class Root extends Component {
   render() {
     const { store, history } = this.props;
     return (
@@ -14,6 +16,8 @@ export default class Root extends Component {
     );
   }
 }
+
+export default DragDropContext(HTML5Backend)(Root);
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,

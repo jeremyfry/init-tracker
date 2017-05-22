@@ -9,11 +9,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <IndexLink to="/">Home</IndexLink>
+        <IndexLink to="/">Players</IndexLink>
         {' | '}
-        <Link to="/fuel-savings">Demo App</Link>
-        {' | '}
-        <Link to="/about">About</Link>
+        <Link to="/i">Initiative</Link>
         <br/>
         {this.props.children}
       </div>

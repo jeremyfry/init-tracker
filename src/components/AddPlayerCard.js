@@ -18,7 +18,7 @@ class AddPlayerCard extends Component {
   render(){
     if(this.props.editing){
       return (
-        <div>
+        <div className="player-card">
           <TextInput name="name" onChange={this.formChange} value={this.props.name}/>
           <TextInput name="playerClass" onChange={this.formChange} value={this.props.playerClass}/>
           <div onClick={this.props.actions.saveNewPlayer}>Save new player</div>
@@ -26,7 +26,7 @@ class AddPlayerCard extends Component {
       );
     }else{
       return (
-        <div onClick={this.props.actions.editNewPlayer}>
+        <div  className="player-card player-card--addition" onClick={this.props.actions.editNewPlayer}>
           Add Player
         </div>
       );
@@ -36,8 +36,8 @@ class AddPlayerCard extends Component {
 
 AddPlayerCard.propTypes = {
   actions: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  playerClass: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  playerClass: PropTypes.string,
   editing: PropTypes.bool.isRequired
 };
 

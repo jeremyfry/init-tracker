@@ -1,0 +1,51 @@
+@import "reset";
+@import "fonts.css";
+
+
+$light-background: #FDFDFD;
+$grey-border: #CFCFCF;
+$standard-border-radius: 4px;
+
+.player-collection {
+	display: flex;
+	width: 100vw;
+	flex-wrap: wrap;
+}
+
+.player-card, .drop-target {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: 200px;
+	max-width: 200px;
+	margin: 10px;
+	justify-content: center;
+	border: 1px solid $grey-border;
+	border-radius: $standard-border-radius;
+	background: $light-background;
+	text-align: center;
+	font-family: 'IM Fell English SC', serif;
+}
+
+.player-card--addition{
+	&:hover{
+		background: darken($light-background, 10%);
+	}
+	cursor: pointer;
+}
+
+.player-card__name{
+	text-align: center;
+	display: block;
+	font-weight: bold;
+	margin-top: 10%;
+}
+
+.player-card__class{
+	margin-bottom: 10%;
+}
+
+.player-card__class-image{
+	width: 90px;
+	margin: 0 auto;
+}

@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import players from './playerReducer';
 import newPlayer from './newPlayerReducer';
-import {routerReducer} from 'react-router-redux';
+import initiativeList from './initiativeListReducer'
+import { routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers({
-  players,
-  newPlayer,
-  routing: routerReducer
+	players,
+	newPlayer,
+	initiativeList,
+	routing: routerReducer
 });
 
 export default rootReducer;

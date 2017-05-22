@@ -4,24 +4,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PLAYER_ACTIONS } from '../constants';
 import PlayerCard from '../components/PlayerCard';
-import AddPlayerCard from '../components/AddPlayerCard';
 
-const PlayersCollectionComponent = (props) =>{
+const SmallPlayerList = (props) =>{
 	return (
-		<div className="player-collection">
+		<div className="player-collection player-collection--small">
 			{props.players.map(player =>
-				<PlayerCard key={player.id} player={player}/>
+				<PlayerCard key={player.name} player={player} draggable={true}/>
 			)}
-			<AddPlayerCard/>
 		</div>
 	);
 };
 
-PlayersCollectionComponent.propTypes = {
+SmallPlayerList.propTypes = {
 	players: PropTypes.array
 };
 
 export default connect(
 	(state) => ({ players: state.players}),
 	(dispatch) => ({ actions: bindActionCreators(PLAYER_ACTIONS, dispatch) })
-)(PlayersCollectionComponent);
+)(SmallPlayerList);
