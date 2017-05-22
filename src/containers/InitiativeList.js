@@ -12,7 +12,7 @@ class InitiativeList extends Component{
 		return (
 			<div className="initiative-list">
 				{players.map(player =>
-					<PlayerCard key={player.name} player={player} draggable={true}/>
+					<PlayerCard key={player.name} player={player} draggable={true} dropTarget={true} cssClasses={[]}/>
 				)}
 				<InitiativeDropTarget dropAction={INITIATIVE_ACTIONS.INSERT_AT_END}/>
 
@@ -25,7 +25,18 @@ InitiativeList.propTypes = {
 	players: PropTypes.array
 };
 
+const mapStateToProps = (state) => {
+	// denormalize initiative list
+	let denormalizedState = Object.assign({},state.initiativeList);
+	denormalizedState.players = denormalizedState.players.map((playerId) => {
+		return state.players.find((player) => {
+			return player.id === playerId;
+		})
+	});
+	return denormalizedState;
+};
+
 export default connect(
-	(state) => ({ players: state.initiativeList}),
+	mapStateToProps,
 	(dispatch) => ({ actions: bindActionCreators(PLAYER_ACTIONS, dispatch) })
 )(InitiativeList);

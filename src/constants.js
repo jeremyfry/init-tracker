@@ -12,6 +12,14 @@ export const INITIATIVE_ACTIONS = {
 	INSERT_AT_END: 'INSERT_AT_END'
 };
 
+export const UI_ACTIONS = {
+	PLAYER_DRAG_UPDATE: 'PLAYER_DRAG_UPDATE'
+};
+
 export const DRAG_TYPES = {
 	PLAYER: 'PLAYER'
+};
+
+export const MODIFIER_CLASSES = {
+	IS_DRAGGABLE: 'is-draggable'
 };

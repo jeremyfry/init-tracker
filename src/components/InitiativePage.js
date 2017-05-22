@@ -1,11 +1,12 @@
 import React from 'react';
-import SmallPlayerList from '../containers/SmallPlayerList';
+import PlayersCollection from '../containers/playerCollection';
 import InitiativeList from '../containers/InitiativeList';
 const InitiativePage = () => {
 	return (
 		<div>
 			<InitiativeList/>
-			<SmallPlayerList allowDragDrop={true}/>
+			<PlayersCollection showAddPlayers={true} cssClasses={["player-collection--fixed"]}
+							   draggableItems={true} addPlayer={false}/>
 		</div>
 	);
 };

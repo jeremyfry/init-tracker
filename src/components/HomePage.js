@@ -4,7 +4,7 @@ import PlayersCollection from '../containers/playerCollection';
 const HomePage = () => {
 	return (
 		<div>
-			<PlayersCollection showAddPlayers={true}/>
+			<PlayersCollection showAddPlayers={true} cssClasses={[]} addPlayer={true}/>
 		</div>
 	);
 };

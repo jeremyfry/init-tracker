@@ -18,5 +18,10 @@ export default {
 	newPlayer: {
 		editing: false
 	},
-	initiativeList: []
+	initiativeList: {
+		players: []
+	},
+	uiState: {
+		playerCardDragging: false
+	}
 };

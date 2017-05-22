@@ -1,18 +1,33 @@
 @import "reset";
 @import "fonts.css";
+@import "modifiers";
 
 
 $light-background: #FDFDFD;
 $grey-border: #CFCFCF;
 $standard-border-radius: 4px;
+$dropMargin: 40px;
 
-.player-collection {
+
+.initiative-list {
 	display: flex;
 	width: 100vw;
 	flex-wrap: wrap;
 }
 
-.player-card, .drop-target {
+.player-collection{
+	display: flex;
+	width: 100vw;
+	flex-wrap: wrap;
+}
+
+.player-collection--fixed{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+.player-card {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -25,6 +40,54 @@ $standard-border-radius: 4px;
 	background: $light-background;
 	text-align: center;
 	font-family: 'IM Fell English SC', serif;
+	transition: margin .4s;
+}
+
+.drop-target{
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: 0;
+	max-width: 200px;
+	min-height: 0;
+	margin: 10px;
+	justify-content: center;
+	text-align: center;
+	font-family: 'IM Fell English SC', serif;
+	opacity: 0;
+	transition: opacity,margin .4s;
+}
+
+.drop-target--active{
+	border: 1px dashed $grey-border;
+	border-radius: $standard-border-radius;
+	background: $light-background;
+	min-height: 100px;
+	min-width: 200px;
+	opacity: 1;
+}
+
+.drop-target--drop-hover{
+	margin-left: $dropMargin;
+}
+
+.player-card--small{
+	height: 10vh;
+	flex-wrap: wrap;
+
+	.player-card__class-image{
+		width: 10vh;
+		order: 0;
+		margin: 0;
+	}
+
+	.player-card__name{
+		order: 1;
+	}
+
+	.player-card__class{
+		order: 2;
+	}
 }
 
 .player-card--addition{
@@ -32,6 +95,10 @@ $standard-border-radius: 4px;
 		background: darken($light-background, 10%);
 	}
 	cursor: pointer;
+}
+
+.player-card--drop-hover{
+	margin-left: $dropMargin;
 }
 
 .player-card__name{

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ClassImage = ({playerClass}) =>{
 	const classImage = '/images/'+playerClass.toLowerCase()+'.png';
 	return (
-		<img className='player-card__class-image' src={classImage}/>
+		<img className="player-card__class-image" src={classImage}/>
 	);
 };
 

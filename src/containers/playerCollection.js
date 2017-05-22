@@ -7,18 +7,22 @@ import PlayerCard from '../components/PlayerCard';
 import AddPlayerCard from '../components/AddPlayerCard';
 
 const PlayersCollectionComponent = (props) =>{
+	const playerCardClasses = props.draggableItems ? ['player-card--small'] : [];
 	return (
-		<div className="player-collection">
+		<div className={['player-collection', ...props.cssClasses].join(' ')}>
 			{props.players.map(player =>
-				<PlayerCard key={player.id} player={player}/>
+				<PlayerCard key={player.id} player={player} draggable={props.draggableItems} cssClasses={playerCardClasses}/>
 			)}
-			<AddPlayerCard/>
+			{props.addPlayer &&	<AddPlayerCard/>}
 		</div>
 	);
 };
 
 PlayersCollectionComponent.propTypes = {
-	players: PropTypes.array
+	players: PropTypes.array,
+	draggableItems: PropTypes.bool,
+	cssClasses: PropTypes.array.isRequired,
+	addPlayer: PropTypes.bool.isRequired
 };
 
 export default connect(
