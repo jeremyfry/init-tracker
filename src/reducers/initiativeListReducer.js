@@ -6,25 +6,26 @@ export default function initiativeListReducer(state = initialState.initiativeLis
 	let newState, playerIndex, insertIndex;
 	switch (action.type){
 		case INITIATIVE_ACTIONS.INSERT_BEFORE:
-			newState = Object.assign({}, state);
-			newState.players = [...state.players];
-			playerIndex = state.players.indexOf(action.player);
+			newState = [...state];
+			playerIndex = state.indexOf(action.player);
 			if(playerIndex !== -1){
 				// remove the item from the array
-				newState.players = [...state.players.slice(0, playerIndex), ...state.players.slice(playerIndex+1)];
+				newState = [...state.slice(0, playerIndex), ...state.slice(playerIndex+1)];
 			}
 
-			insertIndex = newState.players.indexOf(action.before);
-			newState.players.splice(insertIndex, 0, action.player);
+			insertIndex = newState.indexOf(action.before);
+			if(insertIndex === -1){
+				return state;
+			}
+			newState.splice(insertIndex, 0, action.player);
 			return newState;
 
 		case INITIATIVE_ACTIONS.INSERT_AT_END:
-			newState = Object.assign({}, state);
-			playerIndex = state.players.indexOf(action.player);
+			playerIndex = state.indexOf(action.player);
 			if(playerIndex === -1){
-				newState.players = [...state.players, action.player];
+				newState = [...state, action.player];
 			}else{
-				newState.players = [...state.players.slice(0, playerIndex), ...state.players.slice(playerIndex+1), action.player];
+				newState = [...state.slice(0, playerIndex), ...state.slice(playerIndex+1), action.player];
 			}
 			return newState;
 		default:

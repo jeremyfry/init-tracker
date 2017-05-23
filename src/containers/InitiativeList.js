@@ -27,13 +27,13 @@ InitiativeList.propTypes = {
 
 const mapStateToProps = (state) => {
 	// denormalize initiative list
-	let denormalizedState = Object.assign({},state.initiativeList);
-	denormalizedState.players = denormalizedState.players.map((playerId) => {
+	let denormalizedState = [...state.initiativeList];
+	denormalizedState = denormalizedState.map((playerId) => {
 		return state.players.find((player) => {
 			return player.id === playerId;
 		})
 	});
-	return denormalizedState;
+	return {players: denormalizedState};
 };
 
 export default connect(
