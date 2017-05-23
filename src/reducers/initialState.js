@@ -1,4 +1,4 @@
-import { STATUS__NORMAL } from '../constants';
+import { PLAYER_STATUS } from '../constants';
 
 export default {
 	players: [
@@ -6,25 +6,25 @@ export default {
 			id: 0,
 			name: 'Aurthur',
 			playerClass: 'Wizard',
-			status: STATUS__NORMAL
+			status: PLAYER_STATUS.NORMAL
 		},
 		{
 			id: 1,
 			name: 'Dave',
 			playerClass: 'Cleric',
-			status: STATUS__NORMAL
+			status: PLAYER_STATUS.NORMAL
 		},
 		{
 			id: 2,
 			name: 'John',
 			playerClass: 'Thief',
-			status: STATUS__NORMAL
+			status: PLAYER_STATUS.NORMAL
 		},
 		{
 			id: 3,
 			name: 'Mary',
 			playerClass: 'Warrior',
-			status: STATUS__NORMAL
+			status: PLAYER_STATUS.NORMAL
 		}
 	],
 	newPlayer: {
@@ -32,6 +32,6 @@ export default {
 	},
 	initiativeList: [],
 	uiState: {
-		playerCardDragging: false
+		playerCardDragging: -1
 	}
 };

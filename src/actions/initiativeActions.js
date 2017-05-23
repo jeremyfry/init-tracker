@@ -1,5 +1,11 @@
-export const insertPlayer = (player, drop) =>({
-	type: drop.action,
+import { INITIATIVE_ACTIONS } from '../constants';
+export const insertPlayerBefore = (player, before) =>({
+	type: INITIATIVE_ACTIONS.INSERT_BEFORE,
 	player,
-	before: drop.id
+	before
+});
+
+export const insertPlayerAtEnd = (player) =>({
+	type: INITIATIVE_ACTIONS.INSERT_AT_END,
+	player
 });

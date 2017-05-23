@@ -10,7 +10,7 @@ export default function playerReducer(state = initialState.players, action) {
 		return highestId;
 	};
 
-	let highestId, newPlayer;
+	let highestId, newPlayer, playerIndex;
 	switch (action.type) {
 		case PLAYER_ACTIONS.SET_STATUS:
 			return state;

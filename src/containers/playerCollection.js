@@ -10,8 +10,8 @@ const PlayersCollectionComponent = (props) =>{
 	const playerCardClasses = props.draggableItems ? ['player-card--small'] : [];
 	return (
 		<div className={['player-collection', ...props.cssClasses].join(' ')}>
-			{props.players.map(player =>
-				<PlayerCard key={player.id} player={player} draggable={props.draggableItems} cssClasses={playerCardClasses}/>
+			{props.players.map((player, index) =>
+				<PlayerCard key={player.id} index={index} player={player} draggable={props.draggableItems} cssClasses={playerCardClasses}/>
 			)}
 			{props.addPlayer &&	<AddPlayerCard/>}
 		</div>

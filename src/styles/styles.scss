@@ -105,7 +105,6 @@ body{
 }
 
 .drop-target--drop-hover{
-	margin-left: $dropMargin;
 }
 
 .player-card--small{
@@ -138,8 +137,10 @@ body{
 	cursor: pointer;
 }
 
-.player-card--drop-hover{
-	margin-left: $dropMargin;
+
+
+.player-card--hidden{
+	opacity: 0;
 }
 
 .player-card__name{
@@ -157,3 +158,4 @@ body{
 	width: 90px;
 	margin: 0 auto;
 }
+

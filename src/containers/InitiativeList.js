@@ -11,8 +11,8 @@ class InitiativeList extends Component{
 		const {players} = this.props;
 		return (
 			<div className="initiative-list">
-				{players.map(player =>
-					<PlayerCard key={player.name} player={player} draggable={true} dropTarget={true} cssClasses={[]}/>
+				{players.map((player, index) =>
+					<PlayerCard key={player.name} index={index} player={player} draggable={true} isDropTarget={true} cssClasses={[]}/>
 				)}
 				<InitiativeDropTarget dropAction={INITIATIVE_ACTIONS.INSERT_AT_END}/>
 

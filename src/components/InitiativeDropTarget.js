@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 import { DRAG_TYPES,  } from '../constants';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import * as initiativeActions from '../actions/initiativeActions';
 
 class InitiativeDropTarget extends Component {
 	render(){
 		let classNames = ['drop-target'];
 		const {uiState, isOver, canDrop, connectDropTarget} = this.props;
 
-		if(uiState.playerCardDragging){
+		if(uiState.playerCardDragging !== -1){
 			classNames.push('drop-target--active');
 		}
 		if(isOver && canDrop){
 			classNames.push('drop-target--drop-hover');
 		}
-
 		return connectDropTarget(
 			<div className={classNames.join(' ')}>Drop Here</div>
 		);
@@ -23,10 +24,11 @@ class InitiativeDropTarget extends Component {
 }
 
 const dropHandlers = {
-	drop(props){
-		return {
-			action: props.dropAction
-		};
+	drop(props, monitor){
+		const dropResults = monitor.getItem();
+		if(dropResults.hasOwnProperty('id')){
+			props.actions.insertPlayerAtEnd(dropResults.id);
+		}
 	}
 };
 
@@ -43,5 +45,5 @@ InitiativeDropTarget.propTypes = {
 
 export default connect(
 	(state)=>({uiState: state.uiState}),
-	{}
+	(dispatch) => ({ actions: bindActionCreators(Object.assign({}, initiativeActions), dispatch) })
 )(DropTarget(DRAG_TYPES.PLAYER, dropHandlers, dropConnect)(InitiativeDropTarget));
