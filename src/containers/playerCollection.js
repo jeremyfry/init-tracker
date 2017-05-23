@@ -22,10 +22,21 @@ PlayersCollectionComponent.propTypes = {
 	players: PropTypes.array,
 	draggableItems: PropTypes.bool,
 	cssClasses: PropTypes.array.isRequired,
-	addPlayer: PropTypes.bool.isRequired
+	addPlayer: PropTypes.bool.isRequired,
+	filterUsedPlayers: PropTypes.bool
+};
+
+const mapStateToProps = (state, ownProps) => {
+	if(ownProps.filterUsedPlayers){
+		return { players: state.players.filter((player)=>{
+			return state.initiativeList.indexOf(player.id) === -1;
+		})};
+	}else{
+		return { players: state.players};
+	}
 };
 
 export default connect(
-	(state) => ({ players: state.players}),
+	mapStateToProps,
 	(dispatch) => ({ actions: bindActionCreators(PLAYER_ACTIONS, dispatch) })
 )(PlayersCollectionComponent);

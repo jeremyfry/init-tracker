@@ -2,12 +2,49 @@
 @import "fonts.css";
 @import "modifiers";
 
+$primary: rgba(100, 13, 20, 1);
+$background: #F9F7F2;
+$light-primary: rgba(128, 14, 19, 1);
 
-$light-background: #FDFDFD;
+$dark-main: rgba(37, 9, 2, 1);
+$dark-accent: rgba(45, 8, 10, 1);
+
+$light-grey-background: #FDFDFD;
 $grey-border: #CFCFCF;
 $standard-border-radius: 4px;
 $dropMargin: 40px;
+$dark-red: #A00;
 
+body{
+	background: $background;
+}
+
+.nav{
+	display: flex;
+	background: $background;
+}
+
+.nav__link{
+	border-bottom: 1px solid $dark-accent;
+	flex: 1;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+	color: $primary;
+
+	&:hover{
+		background: darken($background, 5%);
+	}
+}
+
+.nav__link--active{
+	color: $light-primary;
+	background: darken($background, 5%);
+}
+
+.nav__link+.nav__link{
+	border-left: 1px solid $dark-accent;
+}
 
 .initiative-list {
 	display: flex;
@@ -37,7 +74,7 @@ $dropMargin: 40px;
 	justify-content: center;
 	border: 1px solid $grey-border;
 	border-radius: $standard-border-radius;
-	background: $light-background;
+	background: $light-grey-background;
 	text-align: center;
 	font-family: 'IM Fell English SC', serif;
 	transition: margin .4s;
@@ -61,7 +98,7 @@ $dropMargin: 40px;
 .drop-target--active{
 	border: 1px dashed $grey-border;
 	border-radius: $standard-border-radius;
-	background: $light-background;
+	background: $light-grey-background;
 	min-height: 100px;
 	min-width: 200px;
 	opacity: 1;
@@ -72,11 +109,15 @@ $dropMargin: 40px;
 }
 
 .player-card--small{
-	height: 10vh;
+	height: 95px;
 	flex-wrap: wrap;
+	min-width: 160px;
+	max-width:160px;
+	padding: 0 10px 0 5px;
 
 	.player-card__class-image{
 		width: 10vh;
+		max-width: 80px;
 		order: 0;
 		margin: 0;
 	}
@@ -92,7 +133,7 @@ $dropMargin: 40px;
 
 .player-card--addition{
 	&:hover{
-		background: darken($light-background, 10%);
+		background: darken($light-grey-background, 10%);
 	}
 	cursor: pointer;
 }

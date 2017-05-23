@@ -6,7 +6,7 @@ const InitiativePage = () => {
 		<div>
 			<InitiativeList/>
 			<PlayersCollection showAddPlayers={true} cssClasses={["player-collection--fixed"]}
-							   draggableItems={true} addPlayer={false}/>
+							   draggableItems={true} addPlayer={false} filterUsedPlayers={true}/>
 		</div>
 	);
 };
