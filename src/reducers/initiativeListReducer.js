@@ -1,13 +1,13 @@
 import { INITIATIVE_ACTIONS } from '../constants';
-import objectAssign from 'object-assign';
 import initialState from './initialState';
-import playerModel from '../store/playerModel';
 
 export default function initiativeListReducer(state = initialState.initiativeList, action){
+
 	let newState, playerIndex, insertIndex;
 	switch (action.type){
 		case INITIATIVE_ACTIONS.INSERT_BEFORE:
 			newState = Object.assign({}, state);
+			newState.players = [...state.players];
 			playerIndex = state.players.indexOf(action.player);
 			if(playerIndex !== -1){
 				// remove the item from the array

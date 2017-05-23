@@ -13,6 +13,18 @@ export default {
 			name: 'Dave',
 			playerClass: 'Cleric',
 			status: STATUS__NORMAL
+		},
+		{
+			id: 2,
+			name: 'John',
+			playerClass: 'Thief',
+			status: STATUS__NORMAL
+		},
+		{
+			id: 3,
+			name: 'Mary',
+			playerClass: 'Warrior',
+			status: STATUS__NORMAL
 		}
 	],
 	newPlayer: {
