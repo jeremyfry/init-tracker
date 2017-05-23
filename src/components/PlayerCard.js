@@ -7,22 +7,20 @@ import ClassImage from './ClassImage';
 import { DRAG_TYPES, MODIFIER_CLASSES } from '../constants';
 import * as initiativeActions from '../actions/initiativeActions';
 import * as uiActions from '../actions/uiActions';
+import classNamesBuilder from '../tools/classNames';
 
 class PlayerCard extends Component {
 	render(){
 		const {player, connectDragSource, connectDropTarget, cssClasses, isOver, canDrop, uiState, isDragging, isDropTarget} = this.props;
-		let classNames = ['player-card', ...cssClasses];
-		if(this.props.draggable){
-			classNames.push(MODIFIER_CLASSES.IS_DRAGGABLE);
-		}
-		if(isOver && canDrop){
-			classNames.push('player-card--drop-hover');
-		}
-		if((!isDragging  && uiState.playerCardDragging === player.id && isDropTarget) || isDragging){
-			classNames.push('player-card--hidden');
-		}
+		const classNames = classNamesBuilder(['player-card', ...cssClasses],
+			{
+				[MODIFIER_CLASSES.IS_DRAGGABLE]: this.props.draggable,
+				'player-card--drop-hover': (isOver && canDrop),
+				'player-card--hidden': ((!isDragging  && uiState.playerCardDragging === player.id && isDropTarget) || isDragging)
+			});
+
 		return connectDropTarget(connectDragSource(
-			<div className={classNames.join(' ')}>
+			<div className={classNames}>
 				<h3 className="player-card__name">{player.name}</h3>
 				<ClassImage playerClass={player.playerClass}/>
 				<h3 className="player-card__class">{player.playerClass}</h3>
