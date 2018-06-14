@@ -12,7 +12,7 @@ class InitiativeList extends Component{
 		return (
 			<div className="initiative-list">
 				{players.map((player, index) =>
-					<PlayerCard key={player.name} index={index} player={player} draggable={true} isDropTarget={true} cssClasses={[]}/>
+					<PlayerCard key={player.name} index={index} player={player} draggable={true} isDropTarget={true} cssClasses={[]} showControls={true}/>
 				)}
 				<InitiativeDropTarget dropAction={INITIATIVE_ACTIONS.INSERT_AT_END}/>
 

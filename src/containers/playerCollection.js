@@ -11,7 +11,7 @@ const PlayersCollectionComponent = (props) =>{
 	return (
 		<div className={['player-collection', ...props.cssClasses].join(' ')}>
 			{props.players.map((player, index) =>
-				<PlayerCard key={player.id} index={index} player={player} draggable={props.draggableItems} cssClasses={playerCardClasses}/>
+				<PlayerCard key={player.id} index={index} player={player} draggable={props.draggableItems} cssClasses={playerCardClasses} editable={props.addPlayer}/>
 			)}
 			{props.addPlayer &&	<AddPlayerCard/>}
 		</div>

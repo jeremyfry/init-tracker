@@ -20,8 +20,9 @@ describe('Reducers - New Player', () => {
 
   it('should handle NEW_PLAYER_CHANGE', () => {
     const state = reducer({}, PLAYER_ACTIONS.NEW_PLAYER_EDIT);
+    console.log(state);
     const action = { type: PLAYER_ACTIONS.NEW_PLAYER_CHANGE};
-    const expected = Object.assign({}, state, {name: 'Name'});
+    const expected = Object.assign({}, {name: 'Name'});
 
     expect(reducer({}, Object.assign({}, action, {field: 'name', value: 'Name'})))
       .toEqual(expected);

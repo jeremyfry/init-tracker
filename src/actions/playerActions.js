@@ -13,6 +13,13 @@ export function editNewPlayer() {
   };
 }
 
+export function editExistingPlayer(value){
+  return {
+    type: PLAYER_ACTIONS.EDIT_EXISTING_PLAYER,
+    value
+  }
+}
+
 export function newPlayerChange(field, value) {
   return {
     type: PLAYER_ACTIONS.NEW_PLAYER_CHANGE,

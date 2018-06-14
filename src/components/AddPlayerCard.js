@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/playerActions';
 import TextInput from './textInput';
+import DropdownInput from './DropdownInput';
 
 class AddPlayerCard extends Component {
 	render(){
+		const options = ['Wizard', 'Cleric', 'Paladin'];
 		const {name, playerClass, actions} = this.props;
 		if (this.props.editing){
 			return (
 				<div className="player-card">
-					<TextInput name="name" onChange={actions.newPlayerChange} value={name}/>
-					<TextInput name="playerClass" onChange={actions.newPlayerChange} value={playerClass}/>
+					<TextInput name="name" onChange={actions.newPlayerChange} value={name} placeholder="Name"/>
+					<DropdownInput name="playerClass" onChange={actions.newPlayerChange} value={playerClass} options={options}/>
 					<div onClick={actions.saveNewPlayer}>Save new player</div>
 				</div>
 			);

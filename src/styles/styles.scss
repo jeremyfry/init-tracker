@@ -70,6 +70,7 @@ body{
 	flex: 1;
 	min-width: 200px;
 	max-width: 200px;
+	height: 180px;
 	margin: 10px;
 	justify-content: center;
 	border: 1px solid $grey-border;
@@ -128,6 +129,10 @@ body{
 	.player-card__class{
 		order: 2;
 	}
+
+	.player-card__controls{
+		display: none;
+	}
 }
 
 .player-card--addition{
@@ -159,3 +164,10 @@ body{
 	margin: 0 auto;
 }
 
+.player-card__controls{
+	opacity: 0;
+}
+
+.player-card:hover .player-card__controls{
+	opacity: 1;
+}
