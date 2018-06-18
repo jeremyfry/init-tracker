@@ -1,5 +1,6 @@
 export default {
   name: '',
   playerClass: '',
-  status: ''
+  status: '',
+  ledPosition: 0
 };

@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlayerControls = () =>{
+const setColor = (color, led) => () => fetch(`http://192.168.137.2:2045/led/${led}/${color}`);
+
+const PlayerControls = (props) =>{
 	return (
-		<div className="player-card__controls">Controls</div>
+		<div className="player-card__controls">
+            <button onClick={setColor('255/0/0', props.player.ledPosition)} className="player-card__red"></button>
+            <button onClick={setColor('0/0/255', props.player.ledPosition)} className="player-card__blue"></button>
+            <button onClick={setColor('0/255/0', props.player.ledPosition)} className="player-card__green"></button>
+        </div>
 	);
 };
 

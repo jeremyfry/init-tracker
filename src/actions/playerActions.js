@@ -17,7 +17,7 @@ export function editExistingPlayer(value){
   return {
     type: PLAYER_ACTIONS.EDIT_EXISTING_PLAYER,
     value
-  }
+  };
 }
 
 export function newPlayerChange(field, value) {

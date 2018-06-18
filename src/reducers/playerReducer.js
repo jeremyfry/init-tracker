@@ -14,8 +14,7 @@ export default function playerReducer(state = initialState.players, action) {
 		case PLAYER_ACTIONS.SET_STATUS:
 			return state;
 		case PLAYER_ACTIONS.NEW_PLAYER_SAVE:
-			const nextId = getNextId(state);
-			return [...state, {id: nextId, ...action.value}];
+			return [...state, {id: getNextId(state), ...action.value}];
 		case PLAYER_ACTIONS.EDIT_EXISTING_PLAYER:
 			const index = state.map(p => p.id).indexOf(action.value.id);
 			return [...state.slice(0, index), ...state.slice(index+1)];

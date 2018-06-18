@@ -6,25 +6,22 @@ import initialState from './initialState';
 describe('Reducers - New Player', () => {
   it('should set initial state by default', () => {
     const action = { type: 'unknown' };
-    const expected = { editing: false };
-
+    const expected = { ...initialState.newPlayer };
     expect(reducer(undefined, action)).toEqual(expected);
   });
 
   it('should handle NEW_PLAYER_EDIT', () => {
     const action = { type: PLAYER_ACTIONS.NEW_PLAYER_EDIT};
-    const expected = Object.assign({}, { editing: true }, playerModel);
+    const expected = Object.assign({}, { ...initialState.newPlayer, editing: true });
 
     expect(reducer({}, action)).toEqual(expected);
   });
 
   it('should handle NEW_PLAYER_CHANGE', () => {
-    const state = reducer({}, PLAYER_ACTIONS.NEW_PLAYER_EDIT);
-    console.log(state);
     const action = { type: PLAYER_ACTIONS.NEW_PLAYER_CHANGE};
     const expected = Object.assign({}, {name: 'Name'});
 
-    expect(reducer({}, Object.assign({}, action, {field: 'name', value: 'Name'})))
+    expect(reducer({name: ''}, Object.assign({}, action, {field: 'name', value: 'Name'})))
       .toEqual(expected);
   });
 

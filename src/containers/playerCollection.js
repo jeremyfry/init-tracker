@@ -5,15 +5,18 @@ import { bindActionCreators } from 'redux';
 import { PLAYER_ACTIONS } from '../constants';
 import PlayerCard from '../components/PlayerCard';
 import AddPlayerCard from '../components/AddPlayerCard';
+import ReserveDropTarget from '../components/ReserveDropTarget';
 
 const PlayersCollectionComponent = (props) =>{
 	const playerCardClasses = props.draggableItems ? ['player-card--small'] : [];
 	return (
 		<div className={['player-collection', ...props.cssClasses].join(' ')}>
+			<span className="list-header">Reserve</span>
 			{props.players.map((player, index) =>
 				<PlayerCard key={player.id} index={index} player={player} draggable={props.draggableItems} cssClasses={playerCardClasses} editable={props.addPlayer}/>
 			)}
 			{props.addPlayer &&	<AddPlayerCard/>}
+			{props.reserveDropTarget && <ReserveDropTarget/>}
 		</div>
 	);
 };
@@ -23,7 +26,8 @@ PlayersCollectionComponent.propTypes = {
 	draggableItems: PropTypes.bool,
 	cssClasses: PropTypes.array.isRequired,
 	addPlayer: PropTypes.bool.isRequired,
-	filterUsedPlayers: PropTypes.bool
+	filterUsedPlayers: PropTypes.bool,
+	reserveDropTarget: PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {

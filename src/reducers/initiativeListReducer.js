@@ -17,6 +17,10 @@ export default function initiativeListReducer(state = initialState.initiativeLis
 				...state.filter( player => player != action.player),
 				action.player
 			];
+		case INITIATIVE_ACTIONS.REMOVE_PLAYER:
+			return [
+				...state.filter(player => player !== action.player)
+			];
 		default:
 			return state;
 	}

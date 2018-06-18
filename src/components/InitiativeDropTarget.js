@@ -18,7 +18,7 @@ class InitiativeDropTarget extends Component {
 			classNames.push('drop-target--drop-hover');
 		}
 		return connectDropTarget(
-			<div className={classNames.join(' ')}>Drop Here</div>
+			<div className={classNames.join(' ')}>Add To Battle</div>
 		);
 	}
 }

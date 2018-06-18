@@ -7,12 +7,15 @@ const TextInput = (props) => {
   };
 
   return (
-    <input
-      className=""
-      type="text"
-      placeholder={props.placeholder}
-      value={props.value}
-      onChange={handleChange}/>
+    <label className="add-player__label">
+      <span >{props.label}</span>
+      <input
+        className="add-player__input"
+        type="text"
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={handleChange} />
+    </label>
   );
 };
 
@@ -23,7 +26,8 @@ TextInput.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
-  ])
+  ]),
+  label: PropTypes.string.isRequired
 };
 
 export default TextInput;

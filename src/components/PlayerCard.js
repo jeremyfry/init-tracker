@@ -11,32 +11,42 @@ import * as playerActions from '../actions/playerActions';
 import classNamesBuilder from '../tools/classNames';
 import PlayerControls from './PlayerControls';
 import AddPlayerCard from './AddPlayerCard';
+import { AttributeScore } from './AttributeScore';
 
 class PlayerCard extends Component {
-	constructor(props) {
+	constructor() {
 		super();
 		this.setEditable = () => {
-			return () => this.props.actions.editExistingPlayer(this.props.player);
+			return () => this.props.actions.editExistingPlayer(this.props.player); 
 		}
 	}
 	render() {
 		const {
 			player, connectDragSource, connectDropTarget, cssClasses, isOver,
 			canDrop, uiState, isDragging, isDropTarget, editable, showControls,
-			actions } = this.props;
-		const classNames = classNamesBuilder(['player-card', ...cssClasses],
+			round
+		} = this.props;
+		const classNames = classNamesBuilder(
+			['player-card', ...cssClasses],
 			{
 				[MODIFIER_CLASSES.IS_DRAGGABLE]: this.props.draggable,
 				'player-card--drop-hover': (isOver && canDrop),
-				'player-card--hidden': ((!isDragging && uiState.playerCardDragging === player.id && isDropTarget) || isDragging)
-			});
+				'player-card--hidden': ((!isDragging && uiState.playerCardDragging === player.id && isDropTarget) || isDragging),
+				'player-card--active': player.id === round.currentId
+			}
+		);
+		const statsBlock = Object.keys(player.stats).map(key => <AttributeScore score={player.stats[key]} attribute={key}/> );
 
 		return connectDropTarget(connectDragSource(
 			<div className={classNames}>
-				{editable && <button onClick={this.setEditable()}>Edit</button>}
-				<h3 className="player-card__name">{player.name}</h3>
-				<ClassImage playerClass={player.playerClass} />
-				<h3 className="player-card__class">{player.playerClass}</h3>
+				{editable && <button className="player-card__edit" onClick={this.setEditable()}>Edit</button>}
+				<div>
+					<ClassImage playerClass={player.playerClass} /> 
+					<h3 className="player-card__name">{player.name} the {player.playerClass}</h3>
+				</div>
+				<div className="player-card__stats">
+					{statsBlock}
+				</div>
 				{showControls && <PlayerControls player={player}></PlayerControls>}
 			</div>
 		));
@@ -82,7 +92,6 @@ const dropHandlers = {
 		if (props.isDropTarget && props.player.id !== dragItem.id && dragItem.index !== newPosition) {
 			props.actions.insertPlayerBefore(monitor.getItem().id, props.player.id);
 			// Ahhh mutation. This is held outside the state by the library and doesn't update
-			console.log(monitor.getItem(), newPosition, props.player.id);
 			monitor.getItem().index = newPosition;
 
 		}
@@ -105,7 +114,7 @@ const PlayerCardDragDrop = DropTarget(DRAG_TYPES.PLAYER, dropHandlers, dropConne
 );
 
 export default connect(
-	(state) => ({ uiState: state.uiState }),
+	(state) => ({ uiState: state.uiState, round: state.currentRound }),
 	(dispatch) => ({ actions: bindActionCreators(Object.assign({}, initiativeActions, uiActions, playerActions), dispatch) })
 )(PlayerCardDragDrop);
 

@@ -3,7 +3,6 @@ import * as actions from './initiativeActions';
 
 describe('Actions', () => {
 	it('should create an action to insert a player', ()=>{
-		const state = {};
 		const drop = 0;
 		const player = 1;
 		const expected = {
@@ -18,7 +17,6 @@ describe('Actions', () => {
 	});
 
 	it('should create an action to insert a player at the end', ()=>{
-		const state = {};
 		const player = 1;
 		const expected = {
 			type: INITIATIVE_ACTIONS.INSERT_AT_END,

@@ -46,16 +46,50 @@ body{
 	border-left: 1px solid $dark-accent;
 }
 
-.initiative-list {
-	display: flex;
+.battle-container{
+	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100vw;
+}
+
+.list-header{
+	text-orientation: upright;
+	writing-mode: vertical-lr;
+	font-weight: bold;
+	font-family: 'IM Fell English SC', serif;
+    letter-spacing: -6px;
+	text-align: center;
+	background: rgb(95, 0, 0);
+	border-right: 2px solid black;
+	color: white;
+	padding: 0 9px 0 5px;
+}
+
+.initiative-list, .reserve-list{
+	display: flex;
 	flex-wrap: wrap;
+	height: 130px;
+	width: 100vw;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
 }
 
 .player-collection{
 	display: flex;
 	width: 100vw;
 	flex-wrap: wrap;
+	align-content: flex-start;
+}
+
+.player-collection--view{
+	.list-header{
+		display: none;
+	}
+	position: absolute;
+	top: 300px;
+	height: calc(100vh - 300px);
 }
 
 .player-collection--fixed{
@@ -65,20 +99,29 @@ body{
 }
 
 .player-card {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	flex: 1;
-	min-width: 200px;
-	max-width: 200px;
+	min-width: 440px;
+	max-width: 500px;
+	width: calc(50% - 30px);
 	height: 180px;
 	margin: 10px;
-	justify-content: center;
 	border: 1px solid $grey-border;
 	border-radius: $standard-border-radius;
 	background: $light-grey-background;
-	text-align: center;
+	text-align: left;
 	font-family: 'IM Fell English SC', serif;
 	transition: margin .4s;
+	padding: 0 6px 0;
+
+}
+
+.player-card__stats{
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
 }
 
 .drop-target{
@@ -108,22 +151,33 @@ body{
 .drop-target--drop-hover{
 }
 
+.player-card--active{
+	border: 2px solid black;
+	box-shadow: rgba(200,0,0,.4) 2px 2px 12px;
+}
+
 .player-card--small{
 	height: 95px;
-	flex-wrap: wrap;
+	display: inline-block;
 	min-width: 160px;
 	max-width:160px;
 	padding: 0 10px 0 5px;
+	text-align: center;
+
+	.player-card__stats{
+		display: none;
+	}
 
 	.player-card__class-image{
-		width: 10vh;
-		max-width: 80px;
+		width: 48px;
 		order: 0;
 		margin: 0;
 	}
 
 	.player-card__name{
 		order: 1;
+		display: block;
+		text-align: center;
 	}
 
 	.player-card__class{
@@ -131,8 +185,112 @@ body{
 	}
 
 	.player-card__controls{
+		display: block;
+	}
+}
+
+
+
+.player-card__edit{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.player-card--hidden{
+	opacity: 0;
+}
+
+.player-card__name{
+	text-align: left;
+	display: inline;
+	font-weight: bold;
+}
+
+.player-card__class-image{
+	width: 30px;
+	margin: 0 auto;
+	vertical-align: middle;
+}
+
+
+.player-card .player-card__controls{
+	position: relative;
+	width: 100%;
+	.player-card__blue, .player-card__red, .player-card__green{
+		display: inline-block;
+		background-color: red;
+		width: 20px;
+		height: 20px;
+		margin: 5px 5px 0;
+	}
+
+	.player-card__blue{
+		background-color: blue;
+	}
+	
+	.player-card__green{
+		background-color: green;
+	}
+}
+
+.attribute-score{
+	display: flex;
+	flex-direction: column;
+	border: 2px solid goldenrod;
+	width: 65px;
+	position: relative;
+	text-align: center;
+	border-radius: 15px;
+	margin: 5px 0;
+	font-size: 14px;
+	align-items: center;
+	flex-grow: 1;
+}
+
+.attribute-score__attribute{
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.attribute-score__score{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.attribute-score__modifier{
+	border: 2px solid goldenrod;
+	border-radius: 10px;
+	display: block;
+	width: 25px;
+}
+
+.attribute-score.init, .attribute-score.spd{
+	.attribute-score__modifier{
 		display: none;
 	}
+}
+
+.attribute-score.pp, .attribute-score.ac, .attribute-score.ssdc {
+	width:  160px;
+	flex-direction: row;
+	.attribute-score__score{
+		order: 1;
+		margin-top: -10px;
+		width: 35px;
+	}
+	.attribute-score__attribute{
+		order: 2;
+		line-height: 30px;
+		white-space: nowrap;
+	}
+	.attribute-score__modifier{
+		display: none;
+	}
+}
+
+.player-card--editing{
+	flex-wrap: wrap;
 }
 
 .player-card--addition{
@@ -142,32 +300,20 @@ body{
 	cursor: pointer;
 }
 
-
-
-.player-card--hidden{
-	opacity: 0;
+.add-player__input{
+	width: 100%;
 }
 
-.player-card__name{
-	text-align: center;
+.add-player__save{
 	display: block;
-	font-weight: bold;
-	margin-top: 10%;
+	width: 95px;
+	height: 75px;
+	margin-top: 10px;
 }
 
-.player-card__class{
-	margin-bottom: 10%;
-}
-
-.player-card__class-image{
-	width: 90px;
-	margin: 0 auto;
-}
-
-.player-card__controls{
-	opacity: 0;
-}
-
-.player-card:hover .player-card__controls{
-	opacity: 1;
+.add-player__label{
+	display: inline-block;
+	width: 95px;
+	padding-top: 7px;
+	font-size: 14px;
 }

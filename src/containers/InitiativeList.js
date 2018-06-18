@@ -11,11 +11,11 @@ class InitiativeList extends Component{
 		const {players} = this.props;
 		return (
 			<div className="initiative-list">
+				<span className="list-header">Battle</span>
 				{players.map((player, index) =>
-					<PlayerCard key={player.name} index={index} player={player} draggable={true} isDropTarget={true} cssClasses={[]} showControls={true}/>
+					<PlayerCard key={player.name} index={index} player={player} draggable={true} isDropTarget={true} cssClasses={['player-card--small']} showControls={true}/>
 				)}
 				<InitiativeDropTarget dropAction={INITIATIVE_ACTIONS.INSERT_AT_END}/>
-
 			</div>
 		);
 	}
@@ -31,9 +31,9 @@ const mapStateToProps = (state) => {
 	denormalizedState = denormalizedState.map((playerId) => {
 		return state.players.find((player) => {
 			return player.id === playerId;
-		})
-	});
-	return {players: denormalizedState};
+		});
+	});	
+	return {players: denormalizedState.filter(player => player && player.name)};
 };
 
 export default connect(

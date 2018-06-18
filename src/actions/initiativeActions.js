@@ -9,3 +9,8 @@ export const insertPlayerAtEnd = (player) =>({
 	type: INITIATIVE_ACTIONS.INSERT_AT_END,
 	player
 });
+
+export const removePlayer = (player) => ({
+	type: INITIATIVE_ACTIONS.REMOVE_PLAYER,
+	player
+})
