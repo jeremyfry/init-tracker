@@ -1,6 +1,5 @@
 import { PLAYER_ACTIONS } from '../constants';
 import reducer from './newPlayerReducer';
-import playerModel from '../store/playerModel';
 import initialState from './initialState';
 
 describe('Reducers - New Player', () => {

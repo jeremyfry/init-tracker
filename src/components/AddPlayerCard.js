@@ -138,10 +138,6 @@ AddPlayerCard.propTypes = {
 	player: PropTypes.object
 };
 
-const mapStateToProps = (state) =>{
-	return state.newPlayer;
-};
-
 export default connect(
 	(state) => ({player: state.newPlayer}),
 	(dispatch) => ({

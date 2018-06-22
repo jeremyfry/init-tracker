@@ -10,7 +10,6 @@ import * as uiActions from '../actions/uiActions';
 import * as playerActions from '../actions/playerActions'; 
 import classNamesBuilder from '../tools/classNames';
 import PlayerControls from './PlayerControls';
-import AddPlayerCard from './AddPlayerCard';
 import { AttributeScore } from './AttributeScore';
 
 class PlayerCard extends Component {

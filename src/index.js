@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 import Root from './components/root';
 
 import configureStore from './store/configureStore';
-// require('./favicon.ico'); // Tell webpack to load favicon.ico
+require('./favicon.png'); // Tell webpack to load favicon.ico
 import './styles/styles.scss';
 import { syncHistoryWithStore } from 'react-router-redux';
 

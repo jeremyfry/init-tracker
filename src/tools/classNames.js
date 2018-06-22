@@ -3,4 +3,4 @@ export default function(requiredClasses, optionalClasses){
 		return optionalClasses[key] ? key : ''
 	});
 	return [...requiredClasses, ...optional].join(' ');
-};
+}
