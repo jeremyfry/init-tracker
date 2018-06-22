@@ -14,9 +14,9 @@ const RoundControl = (props) => {
         ).then((state) => {
             const index = state.currentRound.currentPosition;
             const nextIndex = (index + 1 >= props.initiativeList.length) ? 0 : index + 1;
-            fetch(`http://192.168.137.2:2045/led/${ledForPlayer(pos, state)}/55/55/55`);
-            fetch(`http://192.168.137.2:2045/led/${ledForPlayer(index, state)}/255/255/0`);
-            fetch(`http://192.168.137.2:2045/pulse/${ledForPlayer(nextIndex, state)}/155/0/155`);
+            fetch(`/led/${ledForPlayer(pos, state)}/55/55/55`);
+            fetch(`/led/${ledForPlayer(index, state)}/255/255/0`);
+            fetch(`/pulse/${ledForPlayer(nextIndex, state)}/155/0/155`);
         });
     };
 

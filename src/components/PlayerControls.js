@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const setColor = (color, led) => () => fetch(`http://192.168.137.2:2045/led/${led}/${color}`);
+const setColor = (color, led) => () => fetch(`/led/${led}/${color}`);
 
 const PlayerControls = (props) =>{
 	return (
